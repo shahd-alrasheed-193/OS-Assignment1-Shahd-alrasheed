@@ -7,7 +7,7 @@ import java.util.Random;
 // ANSI Color Codes for enhanced terminal output
 class Colors {
   
-    String s="gggg";
+    
 
     public static final String RESET = "\u001B[0m";
     public static final String BOLD = "\u001B[1m";
