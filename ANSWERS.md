@@ -10,8 +10,7 @@ Answer all 4 questions with detailed explanations. Each answer should be **3-5 s
 **Question**: Explain the difference between a **thread** and a **process**. Why did we use threads in this assignment instead of creating separate processes?
 
 **Your Answer:**
-
-[Write your answer here. Consider: What is a process? What is a thread? How do they differ in terms of memory, resources, creation overhead? Why are threads more suitable for this simulation?]
+A process is like a complete program running with its own dedicated memory and resources, which makes it "heavy" to create. On the other hand, a thread is a lightweight unit of execution that lives inside a process and shares memory with other threads. In this assignment, we used threads because they are much faster to create and switch between, which is perfect for simulating multiple tasks like P1 to P10 running simultaneously without crashing the system resources.
 
 ---
 
@@ -21,15 +20,16 @@ Answer all 4 questions with detailed explanations. Each answer should be **3-5 s
 
 **Your Answer:**
 
-[Write your answer here. Describe the specific behavior - where does the process go? When does it run again? Give an example from your actual program output showing a process that was re-queued.]
-
+In Round-Robin scheduling, if a process exceeds its assigned Time Quantum before finishing its task, it is "preempted." The scheduler stops the process, saves its state, and moves it from the Running state back to the end of the Ready Queue. It has to wait for its next turn while other processes get a chance to use the CPU.
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+[P3] executing quantum [4000ms]
+P3 yields CPU for next process.
+P3 added to ready queue: [P4 P5 P6 P7 P8 P9 P10 P1 P2 P3]
 ```
 
 **Explanation of example:**
-[Explain what's happening in the output snippet you pasted]
+This snippet from my output shows that P3 was running but could not finish within the 4000ms limit. The scheduler forced it to "yield" the CPU and moved it to the very end of the Ready Queue (after P2). This proves the Round-Robin logic is working by giving P4 the next turn.
 
 ---
 
@@ -41,15 +41,15 @@ Example from my output:
 
 [Write your answer here. For each state, explain when P1 enters that state during the simulation. Use your understanding of the code to trace through the lifecycle.]
 
-1. **New**: [When is P1 in New state?]
+1. **New**: [ When the P1 thread object is first created in the code using new Thread(p1). At this point, it hasn't started running yet.]
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: [When the code calls p1.start() and we see the message "P1 added to ready queue" in the terminal. It is now waiting for the scheduler to give it CPU time.]
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: [When the terminal shows "[P1] executing quantum [4000ms]". This means P1 is currently using the CPU to perform its work.]
 
-4. **Waiting**: [When/why would P1 be Waiting?]
+4. **Waiting**: [When P1's time quantum ends and it "yields" the CPU. It goes back to the queue and "waits" while other processes (like P2, P3) take their turn, or when it uses Thread.sleep() during the simulation.]
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: [ When P1 completes all its burst time and the terminal shows "P1 finished execution!". The thread is now closed and cannot be run again.]
 
 ---
 
@@ -59,21 +59,21 @@ Example from my output:
 
 **Your Answer:**
 
-### Example 1: [Name of application/scenario]
+### Example 1: [Web Servers handling HTTP requests]
 
 **Description**: 
-[Describe the real-world scenario or application]
+[When many users try to access a website at the same time, the server creates a thread for each request.]
 
 **Why Round-Robin works well here**: 
-[Explain why Round-Robin scheduling is suitable. Consider fairness, responsiveness, predictability, etc.]
+[Explain why Round-Robin scheduling is suitable. Consider fairness, responsiveness, predictability, etc.It ensures fairness so that no single user has to wait too long. Every request gets a small slice of CPU time, keeping the website responsive for everyone instead of finishing one person's request while others see a loading screen.]
 
-### Example 2: [Name of application/scenario]
+### Example 2: [Multitasking in Operating Systems]
 
 **Description**: 
-[Describe the real-world scenario or application]
+[ Running multiple applications like a music player, a web browser, and a code editor (VS Code) simultaneously on a laptop.]
 
 **Why Round-Robin works well here**: 
-[Explain why Round-Robin scheduling is suitable. Consider fairness, responsiveness, predictability, etc.]
+[It provides predictability and smoothness. By switching between these apps very quickly using a time quantum, it gives the user the illusion that all apps are running at the exact same time without any lag or freezing.]
 
 ---
 
