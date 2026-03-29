@@ -128,7 +128,7 @@ public class SchedulerSimulation {
     private static List<Process> completedProcesses = new ArrayList<>();
 
     public static void main(String[] args) {
-        int studentID = 447851247;  
+        int studentID = 445052193;  
         Random random = new Random(studentID);
         int timeQuantum = 2000 + random.nextInt(4) * 1000; 
         int numProcesses = 10 + random.nextInt(11); 
