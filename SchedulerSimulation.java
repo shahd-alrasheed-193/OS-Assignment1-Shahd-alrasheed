@@ -1,4 +1,4 @@
-[3/27/2026 1:19 PM] -: import java.util.HashMap;
+ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -103,7 +103,7 @@ class Process implements Runnable {
     public void setLastReadyTime(long lastReadyTime) {
         this.lastReadyTime = lastReadyTime;
     }
-[3/27/2026 1:19 PM] -: public void runToCompletion() {
+     public void runToCompletion() {
         try {
             System.out.println(Colors.BRIGHT_CYAN + "  ⚡ " + Colors.BOLD + Colors.CYAN + name + " finishing remaining " + remainingTime + "ms" + Colors.RESET);
             Thread.sleep(remainingTime); 
@@ -184,7 +184,7 @@ public class SchedulerSimulation {
     public static void displayFinalReport() {
         System.out.println("\n" + Colors.BOLD + Colors.YELLOW + "╔═══════════════════════════════════════════════════════════════════════════╗" + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.YELLOW + "║" + Colors.
-[3/27/2026 1:19 PM] -: RESET + "  📊 FINAL SCHEDULER STATISTICS                                            " + Colors.BOLD + Colors.YELLOW + "║" + Colors.RESET);
+         RESET + "  📊 FINAL SCHEDULER STATISTICS                                            " + Colors.BOLD + Colors.YELLOW + "║" + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.YELLOW + "╠═══════════════════════════════════════════════════════════════════════════╣" + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.YELLOW + "║" + Colors.RESET + "  Total Context Switches: " + String.format("%-48d", contextSwitchCount) + Colors.BOLD + Colors.YELLOW + "║" + Colors.RESET);
         
