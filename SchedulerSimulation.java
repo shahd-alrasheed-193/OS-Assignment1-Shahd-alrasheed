@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import java.util.HashMap;
+=======
+ import java.util.HashMap;
+>>>>>>> 09e477436e9ebb567ed4f3f9a31997cdbf646348
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -183,10 +187,24 @@ class Process implements Runnable {
         long waitTime = currentTime - lastReadyTime; // Time spent waiting since last added to queue
         totalWaitingTime += waitTime;
     }
+<<<<<<< HEAD
     
     // FEATURE 3: Method to set last ready time when process re-enters queue
     public void setLastReadyTime(long time) {
         this.lastReadyTime = time;
+=======
+
+    public void setLastReadyTime(long lastReadyTime) {
+        this.lastReadyTime = lastReadyTime;
+    }
+     public void runToCompletion() {
+        try {
+            System.out.println(Colors.BRIGHT_CYAN + "  ⚡ " + Colors.BOLD + Colors.CYAN + name + " finishing remaining " + remainingTime + "ms" + Colors.RESET);
+            Thread.sleep(remainingTime); 
+            remainingTime = 0; 
+            System.out.println(Colors.BRIGHT_GREEN + "  ✓ " + Colors.BOLD + Colors.CYAN + name + " finished!" + Colors.RESET);
+        } catch (InterruptedException e) {}
+>>>>>>> 09e477436e9ebb567ed4f3f9a31997cdbf646348
     }
 
     // Check if the process has finished (i.e., no remaining time)
@@ -387,6 +405,20 @@ public class SchedulerSimulation {
                                         Map<Thread, Process> processMap) {
         // Create a new thread to run the process
         Thread thread = new Thread(process);
+<<<<<<< HEAD
+=======
+        processQueue.add(thread);
+        processMap.put(thread, process);
+        System.out.println(Colors.BLUE + "  ➕ " + process.getName() + " (Priority: " + process.getPriority() + ") added to queue." + Colors.RESET);
+    }
+
+    public static void displayFinalReport() {
+        System.out.println("\n" + Colors.BOLD + Colors.YELLOW + "╔═══════════════════════════════════════════════════════════════════════════╗" + Colors.RESET);
+        System.out.println(Colors.BOLD + Colors.YELLOW + "║" + Colors.
+         RESET + "  📊 FINAL SCHEDULER STATISTICS                                            " + Colors.BOLD + Colors.YELLOW + "║" + Colors.RESET);
+        System.out.println(Colors.BOLD + Colors.YELLOW + "╠═══════════════════════════════════════════════════════════════════════════╣" + Colors.RESET);
+        System.out.println(Colors.BOLD + Colors.YELLOW + "║" + Colors.RESET + "  Total Context Switches: " + String.format("%-48d", contextSwitchCount) + Colors.BOLD + Colors.YELLOW + "║" + Colors.RESET);
+>>>>>>> 09e477436e9ebb567ed4f3f9a31997cdbf646348
         
         // Add the thread to the ready queue
         processQueue.add(thread);
